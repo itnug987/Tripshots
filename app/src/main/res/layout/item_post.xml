@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+
+            android:id="@+id/blog_post_image">
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crops Stick With Despite Trade War In India With USA"
+            android:textSize="25dp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/blog_post_title"
+            android:layout_margin="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae diam ut urna posuere hendrerit ac vitae mauris. Nunc elit mauris, feugiat vitae gravida at, mollis et ligula. Sed tincidunt neque massa. Phasellus eu neque porta, ultricies leo posuere, tincidunt eros."
+            android:fontFamily="sans-serif-condensed-light"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="2.7sp"
+            android:layout_margin="10dp"
+            android:id="@+id/blog_post_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="16 August"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="normal"
+                android:textColor="#a7a7a7"
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="0.7sp"
+                android:id="@+id/blog_post_date"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Read More"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="right"
+                android:id="@+id/blog_post_btn"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

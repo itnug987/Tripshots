@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/house_outline"
+            android:title="Home"
+            android:visible="true"/>
+
+    </group>
+
+    <group android:checkableBehavior="single" android:id="@+id/down" >
+        <item
+            android:id="@+id/about_us"
+            android:title="About Us"
+            android:visible="true"
+
+            />
+        <item
+            android:id="@+id/privacy_policy"
+            android:title="Privacy Policy"
+            android:visible="true">
+        </item>
+
+        <item
+            android:id="@+id/support"
+            android:title="Support"
+            android:visible="true"
+            ></item>
+
+    </group>
+
+
+</menu>
