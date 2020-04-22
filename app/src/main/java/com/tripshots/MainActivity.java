@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.material.navigation.NavigationView;
 import com.tripshots.Adapter.blogAdapter;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nav_view;
 
     RecyclerView blog_recycler_view;
+    ProgressBar progressBar;
 
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl(com.tripshots.Api.api.url)
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         blog_recycler_view = findViewById(R.id.blog_items);
         blog_recycler_view.setLayoutManager(new LinearLayoutManager(this));
+
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
 
         getBlogPosts();
     }
@@ -132,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<blog_response> call, Response<blog_response> response) {
                 if(response.isSuccessful()){
+                    progressBar.setVisibility(View.GONE);
                     Log.d("blog retrieval", "success");
                     blog_response blogResponse = response.body();
 

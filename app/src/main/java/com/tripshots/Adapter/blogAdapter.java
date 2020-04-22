@@ -55,7 +55,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
         viewHolder.blog_post_title.setText(result.getTitle());
 
         String s = Html.fromHtml(result.getContent()).toString();
-        s = s.substring(0, Math.min(s.length(), 250));
+        s = s.substring(0, Math.min(s.length(), 80));
 
         viewHolder.blog_post_content.setText(s+"...");
 
@@ -66,7 +66,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
         try
         {
             Date d = sdf.parse(s1);
-            String s2 = (new SimpleDateFormat("dd MMMM")).format(d);
+            String s2 = (new SimpleDateFormat("dd MMMM YYYY")).format(d);
 
             viewHolder.blog_post_date.setText(s2);
         }
