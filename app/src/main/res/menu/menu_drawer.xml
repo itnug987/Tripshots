@@ -5,8 +5,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/house_outline"
             android:title="Home"
+            android:visible="true"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"
             android:visible="true"/>
 
     </group>

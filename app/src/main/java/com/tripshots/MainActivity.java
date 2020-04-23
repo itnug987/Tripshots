@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import com.google.android.material.navigation.NavigationView;
 import com.tripshots.Adapter.blogAdapter;
 import com.tripshots.Api.api;
+import com.tripshots.Data.sharedPref;
 import com.tripshots.response.blog_item;
 import com.tripshots.response.blog_response;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBar actionBar;
     private Toolbar toolbar;
     private NavigationView nav_view;
+
+    com.tripshots.Data.sharedPref sharedPref;
 
     RecyclerView blog_recycler_view;
     ProgressBar progressBar;
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
         initDrawerMenu();
+
+        sharedPref = new sharedPref(getApplicationContext());
 
         blog_recycler_view = findViewById(R.id.blog_items);
         blog_recycler_view.setLayoutManager(new LinearLayoutManager(this));
@@ -106,13 +111,18 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(i);
                 break;
-
+            case R.id.nav_logout:
+                sharedPref.logoutUser();
+                i = new Intent(MainActivity.this, ActivitySignUp.class);
+                startActivity(i);
+                break;
 
             case R.id.privacy_policy:
                 String inURL = "https://www.freshokartz.com/privacy-policy.html";
                 i = new Intent( Intent.ACTION_VIEW , Uri.parse( inURL ) );
                 startActivity(i);
                 break;
+
 
 
 
