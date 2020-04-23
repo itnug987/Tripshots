@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ActivityRegistrationWithNumber"
+        android:background="#FFFFFF"
+        >
+
+        <ImageView
+            android:id="@+id/farmer_img"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/camera"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/title"
+            android:layout_below="@+id/farmer_img"
+            android:layout_marginTop="30dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textColor="#000000"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                android:text="Register to "
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:textColor="@color/colorPrimary"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                android:text="TripShots"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/title"
+            android:id="@+id/title_2"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                android:text="Please Enter Your Details"
+                />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:id="@+id/layout"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:hint="Email"
+                android:id="@+id/email"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:id="@+id/layout2"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:hint="Password"
+                android:id="@+id/password"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar"
+            android:visibility="gone"></ProgressBar>
+
+
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout2"
+            android:layout_marginTop="46dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rounded_button_before"
+            android:text="Register"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/btn_register"
+            android:orientation="vertical"
+            android:id="@+id/layout_1"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#303030"
+                    android:layout_centerHorizontal="true"
+                    android:text="By continuing/processing you agree to the "
+                    android:textSize="15dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/layout_1"
+            android:orientation="vertical"
+            android:id="@+id/layout__2"
+            android:layout_marginBottom="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy "
+                    android:textColor="#21c801"
+                    android:textSize="15dp"
+                    android:clickable="true"
+                    android:id="@+id/privacy_policy"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#303030"
+                    android:text="of TripShots "
+                    android:textSize="15dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
