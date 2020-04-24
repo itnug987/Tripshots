@@ -2,6 +2,7 @@ package com.tripshots;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ViewUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class ActivitySignUp extends AppCompatActivity {
     Button btn_register;
     sharedPref sharedPref;
 
+    Button btn_already_registered;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -37,24 +40,40 @@ public class ActivitySignUp extends AppCompatActivity {
         password = findViewById(R.id.password);
         btn_register = findViewById(R.id.btn_register);
 
+        btn_already_registered = findViewById(R.id.btn_already_registered);
+
         mAuth = FirebaseAuth.getInstance();
+
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                       .addOnCompleteListener(ActivitySignUp.this, new OnCompleteListener<AuthResult>() {
-                           @Override
-                           public void onComplete(@NonNull Task<AuthResult> task) {
-                               if(task.isSuccessful()){
-                                   sharedPref.createLoginSession();
-                                   Intent i = new Intent(ActivitySignUp.this, MainActivity.class);
-                                   startActivity(i);
-                               } else{
-                                   Toast.makeText(ActivitySignUp.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
-                               }
-                           }
-                       });
+                btn_register.setBackground(getDrawable(R.drawable.rounded_button_after));
+                if(email.getText().length()!=0 && password.getText().length()!=0) {
+                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                            .addOnCompleteListener(ActivitySignUp.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        sharedPref.createLoginSession();
+                                        Intent i = new Intent(ActivitySignUp.this, MainActivity.class);
+                                        startActivity(i);
+                                    } else {
+                                        Toast.makeText(ActivitySignUp.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+                else
+                    Toast.makeText(ActivitySignUp.this, "Please enter Email and Password", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_already_registered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivitySignUp.this, ActivityLogin.class);
+                startActivity(i);
             }
         });
 
