@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "224934731085",
+    "firebase_url": "https://tripshots-1587437894774.firebaseio.com",
+    "project_id": "tripshots-1587437894774",
+    "storage_bucket": "tripshots-1587437894774.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224934731085:android:8fed777566ef20621a2b04",
+        "android_client_info": {
+          "package_name": "com.tripshots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224934731085-jvmqnvhdc55jptqn4ncd5gvboujd229h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripshots",
+            "certificate_hash": "8afab62e294c9f7a2ab25e2d3c3581902a95a72f"
+          }
+        },
+        {
+          "client_id": "224934731085-4likjtv1o7ts955857mplvls38lt92lt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDURcZrYQ8EJOsfGFuSFL1YBGx4TY9hJ3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224934731085-4likjtv1o7ts955857mplvls38lt92lt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

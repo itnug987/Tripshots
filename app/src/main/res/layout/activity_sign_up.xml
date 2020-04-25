@@ -80,11 +80,31 @@
 
         </LinearLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:id="@+id/layout3"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:hint="Name"
+                android:id="@+id/name"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:id="@+id/layout"
@@ -122,6 +142,27 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:id="@+id/layout4"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:hint="Location"
+                android:id="@+id/location"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <ProgressBar
             android:layout_width="match_parent"
@@ -136,7 +177,7 @@
             android:id="@+id/btn_register"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout2"
+            android:layout_below="@+id/layout4"
             android:layout_marginTop="46dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_before"
