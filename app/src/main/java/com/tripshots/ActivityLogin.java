@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,8 @@ public class ActivityLogin extends AppCompatActivity {
     Button btn_login;
     com.tripshots.Data.sharedPref sharedPref;
 
+    ProgressBar progressBar;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -35,19 +38,26 @@ public class ActivityLogin extends AppCompatActivity {
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
 
+        progressBar = findViewById(R.id.progress_bar);
+
         mAuth = FirebaseAuth.getInstance();
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_login.setBackground(getDrawable(R.drawable.rounded_button_after));
+                progressBar.setVisibility(View.VISIBLE);
+
                 if(email.getText().length()!=0 && password.getText().length()!=0){
                     mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                             .addOnCompleteListener(ActivityLogin.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        sharedPref.createLoginSession();
+                                        sharedPref.createLoginSession(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                                        progressBar.setVisibility(View.GONE);
+
                                         Intent i = new Intent(ActivityLogin.this, MainActivity.class);
                                         startActivity(i);
                                     }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,8 @@ public class ActivitySignUp extends AppCompatActivity {
 
     Button btn_already_registered;
 
+    ProgressBar progressBar;
+
     EditText name, location;
 
     private FirebaseAuth mAuth;
@@ -54,6 +57,9 @@ public class ActivitySignUp extends AppCompatActivity {
 
         btn_already_registered = findViewById(R.id.btn_already_registered);
 
+        progressBar = findViewById(R.id.progress_bar);
+
+
         mAuth = FirebaseAuth.getInstance();
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -61,12 +67,14 @@ public class ActivitySignUp extends AppCompatActivity {
             public void onClick(View v) {
                 btn_register.setBackground(getDrawable(R.drawable.rounded_button_after));
 
-                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                progressBar.setVisibility(View.VISIBLE);
+
+                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                             .addOnCompleteListener(ActivitySignUp.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        sharedPref.createLoginSession();
+                                        sharedPref.createLoginSession(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                                         User user = new User(name.getText().toString(), email.getText().toString(),
                                                  location.getText().toString());
@@ -77,8 +85,12 @@ public class ActivitySignUp extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
+
                                                     Toast.makeText(ActivitySignUp.this,
                                                             "Registration Success", Toast.LENGTH_SHORT).show();
+
+                                                    progressBar.setVisibility(View.GONE);
+
                                                     Intent i = new Intent(ActivitySignUp.this, MainActivity.class);
                                                     startActivity(i);
                                                 }else{

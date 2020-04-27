@@ -29,9 +29,9 @@
             android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:srcCompat="@drawable/user" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="Srinivas"
                     android:id="@+id/drawer_name"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jaipur, Rajasthan"
+                    android:text="Hyderabad, TS"
                     android:id="@+id/drawer_location"
                     android:textColor="#000000"/>
             </LinearLayout>

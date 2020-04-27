@@ -29,6 +29,8 @@ public class sharedPref {
 
     private static final String IS_ADDRESS = "IsAddress";
 
+    public static final String KEY_UID = "id";
+
     // User name (make variable public to access from outside)
 
     // Email address (make variable public to access from outside)
@@ -44,11 +46,12 @@ public class sharedPref {
     /**
      * Create login session
      */
-    public void createLoginSession() {
+    public void createLoginSession(String uid) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing token in pref
+        editor.putString(KEY_UID, uid);
 
         // commit changes
         editor.commit();
@@ -88,13 +91,12 @@ public class sharedPref {
         // user1 email id
         //   user1.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
 
+        user.put(KEY_UID, pref.getString(KEY_UID, null));
+
+
         // return user1
         return user;
     }
-
-
-
-
 
     /**
      * Clear session details

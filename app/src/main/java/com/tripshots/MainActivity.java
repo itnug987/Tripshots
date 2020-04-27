@@ -1,5 +1,6 @@
 package com.tripshots;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,14 +16,22 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tripshots.Adapter.blogAdapter;
 import com.tripshots.Api.api;
 import com.tripshots.Data.sharedPref;
 import com.tripshots.response.blog_item;
 import com.tripshots.response.blog_response;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView blog_recycler_view;
     ProgressBar progressBar;
 
+    TextView drawer_name, drawer_location;
+
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl(com.tripshots.Api.api.url)
             .addConverterFactory(GsonConverterFactory.create());
@@ -59,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPref = new sharedPref(getApplicationContext());
 
+        HashMap<String, String> user = sharedPref.getUserDetails();
+
+        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         blog_recycler_view = findViewById(R.id.blog_items);
         blog_recycler_view.setLayoutManager(new LinearLayoutManager(this));
 
@@ -66,6 +81,38 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         getBlogPosts();
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("users").child(uid);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String name = dataSnapshot.child("name").getValue().toString();
+                String location = dataSnapshot.child("location").getValue().toString();
+
+                try {
+
+                    drawer_name = findViewById(R.id.drawer_name);
+                    drawer_location = findViewById(R.id.drawer_location);
+
+                    drawer_name.setText(name);
+                    drawer_location.setText(location);
+                }
+                catch (Exception e){
+                    Log.d("drawer exception", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
     }
 
     private void initToolbar() {
