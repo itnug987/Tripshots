@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView drawer_name, drawer_location;
 
+    FloatingActionButton add_post;
+
     Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl(com.tripshots.Api.api.url)
             .addConverterFactory(GsonConverterFactory.create());
@@ -76,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
         blog_recycler_view = findViewById(R.id.blog_items);
         blog_recycler_view.setLayoutManager(new LinearLayoutManager(this));
+
+        add_post = findViewById(R.id.add_post);
 
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
@@ -111,7 +116,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        add_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ActivityAddPost.class);
+                startActivity(i);
+            }
+        });
 
     }
 
