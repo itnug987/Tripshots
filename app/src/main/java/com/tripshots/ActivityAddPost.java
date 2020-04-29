@@ -2,7 +2,9 @@ package com.tripshots;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -16,6 +18,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -42,6 +45,9 @@ import java.io.IOException;
 
 public class ActivityAddPost extends AppCompatActivity {
 
+    private ActionBar actionBar;
+    private Toolbar toolbar;
+
     EditText title, description, travel_story;
     Button  post_btn;
     ProgressDialog progressDialog ;
@@ -63,6 +69,8 @@ public class ActivityAddPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
+
+        initToolbar();
 
         title = findViewById(R.id.post_title);
         description = findViewById(R.id.post_description);
@@ -119,8 +127,25 @@ public class ActivityAddPost extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle(R.string.app_name);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int item_id = item.getItemId();
+        if (item_id == android.R.id.home) {
+            super.onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

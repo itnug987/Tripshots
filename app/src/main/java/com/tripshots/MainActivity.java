@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,12 +27,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tripshots.Adapter.PostAdapter;
 import com.tripshots.Adapter.blogAdapter;
 import com.tripshots.Api.api;
 import com.tripshots.Data.sharedPref;
+import com.tripshots.model.Post;
 import com.tripshots.response.blog_item;
 import com.tripshots.response.blog_response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     com.tripshots.Data.sharedPref sharedPref;
 
     RecyclerView blog_recycler_view;
+    RecyclerView blog_firebase_recycler_view;
     ProgressBar progressBar;
 
     TextView drawer_name, drawer_location;
@@ -61,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
             .addConverterFactory(GsonConverterFactory.create());
     Retrofit retrofit = builder.build();
     com.tripshots.Api.api Api = retrofit.create(com.tripshots.Api.api.class);
+
+    List<Post> postList;
+    PostAdapter postAdapter;
 
 
     @Override
@@ -80,12 +88,18 @@ public class MainActivity extends AppCompatActivity {
         blog_recycler_view = findViewById(R.id.blog_items);
         blog_recycler_view.setLayoutManager(new LinearLayoutManager(this));
 
+        blog_firebase_recycler_view = findViewById(R.id.blog_items_firebase);
+        blog_firebase_recycler_view.setLayoutManager(new LinearLayoutManager(this));
+
         add_post = findViewById(R.id.add_post);
 
         progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
 
         getBlogPosts();
+
+        getBlogPostsFirebase();
+
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference().child("users").child(uid);
@@ -220,6 +234,44 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Blog retrieval failed", t.getCause().toString());
                 Log.d("blog retrieval", "failure");
 
+
+            }
+        });
+    }
+
+    private void getBlogPostsFirebase(){
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("posts");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList = new ArrayList<>();
+
+                Log.d("firebase posts", "message");
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+
+                    Log.d("dataSnapshot key", FirebaseAuth.getInstance().getUid());
+
+                    Iterable<DataSnapshot> postChildren = snapshot.getChildren();
+
+                    for (DataSnapshot postSnap : postChildren) {
+
+                        Post post = postSnap.getValue(Post.class);
+
+                        Log.d("post title", post.getTitle());
+
+                        postList.add(post);
+                    }
+
+                    postAdapter = new PostAdapter(MainActivity.this, postList);
+                    blog_firebase_recycler_view.setAdapter(postAdapter);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

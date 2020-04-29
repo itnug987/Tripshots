@@ -76,7 +76,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
             e.printStackTrace();
         }
 
-        viewHolder.blog_post_btn.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btn_read_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int id = i;
@@ -109,7 +109,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
 
         ImageView blog_post_image;
         TextView blog_post_title, blog_post_content, blog_post_date;
-        Button blog_post_btn;
+        Button btn_read_more;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -120,7 +120,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
             blog_post_content = itemView.findViewById(R.id.blog_post_content);
             blog_post_date = itemView.findViewById(R.id.blog_post_date);
 
-            blog_post_btn = itemView.findViewById(R.id.blog_post_btn);
+            btn_read_more = itemView.findViewById(R.id.btn_read_more);
 
         }
 

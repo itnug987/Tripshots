@@ -73,7 +73,7 @@
                     android:textAllCaps="false"
                     android:textColor="#003366"
                     android:layout_gravity="right"
-                    android:id="@+id/blog_post_btn"/>
+                    android:id="@+id/btn_read_more"/>
             </LinearLayout>
 
 
