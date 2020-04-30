@@ -195,9 +195,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
 
-
-
-
             case R.id.about_us:
                // showDialogAbout();
                 break;

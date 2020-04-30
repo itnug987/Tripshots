@@ -29,8 +29,8 @@
             android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 app:srcCompat="@drawable/user" />
 
             <LinearLayout
@@ -62,6 +62,7 @@
                 android:background="@android:color/transparent"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/drawer_btn_edit_profile"
+                android:visibility="invisible"
                 ></ImageButton>
         </LinearLayout>
 
