@@ -35,56 +35,69 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/appbar_layout"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:id="@+id/layout"
-            android:layout_marginBottom="80dp">
-
-
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:visibility="gone"
-                android:id="@+id/progress_bar"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/blog_items"></androidx.recyclerview.widget.RecyclerView>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/blog_items_firebase"
-                android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_post"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@android:drawable/ic_input_add"
-            android:tint="@color/common_google_signin_btn_text_dark_default"
-            app:rippleColor="@color/common_google_signin_btn_text_dark_pressed" />
+            android:layout_below="@+id/appbar_layout"
+            >
+
+
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:id="@+id/layout"
+                    android:layout_marginBottom="80dp">
+
+
+                    <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        android:id="@+id/progress_bar"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/blog_items"></androidx.recyclerview.widget.RecyclerView>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/blog_items_firebase"
+                        android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/add_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_gravity="bottom|right"
+                    android:tint="@color/common_google_signin_btn_text_dark_default"
+                    app:rippleColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+        </RelativeLayout>
+
 
          </RelativeLayout>
 </ScrollView>

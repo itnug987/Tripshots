@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/include_main_content" />
+        <include layout="@layout/include_main_content_1" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/search_bar"
