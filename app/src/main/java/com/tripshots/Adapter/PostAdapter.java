@@ -1,6 +1,7 @@
 package com.tripshots.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.tripshots.ActivityBlogSubPage;
+import com.tripshots.ActivityPostSubPage;
 import com.tripshots.R;
 import com.tripshots.model.Post;
 
@@ -41,7 +44,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.blog_post_title.setText(mData.get(position).getTitle());
 
@@ -69,6 +72,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+
+        holder.btn_read_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = position;
+                Intent i = new Intent(mContext, ActivityPostSubPage.class);
+                i.putExtra("id",id);
+                mContext.startActivity(i);
+            }
+        });
 
 
     }
