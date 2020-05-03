@@ -2,7 +2,7 @@ package com.tripshots.model;
 
 public class Post {
 
-    String title, description, travel_story, image_url;
+    String title, description, travel_story, image_url, date_published;
 
     public Post(String title, String description, String travel_story, String image_url) {
         this.title = title;
@@ -15,6 +15,14 @@ public class Post {
 
     public Post(){
 
+    }
+
+    public String getDate_published() {
+        return date_published;
+    }
+
+    public void setDate_published(String date_published) {
+        this.date_published = date_published;
     }
 
     public String getTitle() {

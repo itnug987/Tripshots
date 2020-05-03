@@ -42,6 +42,7 @@ import com.tripshots.model.Post;
 import com.tripshots.model.image_upload;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class ActivityAddPost extends AppCompatActivity {
 
@@ -198,6 +199,11 @@ public class ActivityAddPost extends AppCompatActivity {
                             post.setDescription(description.getText().toString().trim());
                             post.setTravel_story(travel_story.getText().toString().trim());
                             post.setImage_url(taskSnapshot.getUploadSessionUri().toString().trim());
+
+                            Date d = new Date();
+                            String s1 = d.toString();
+
+                            post.setDate_published(s1);
 
                             ref.child(String.valueOf(post_id+1)).setValue(post).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
