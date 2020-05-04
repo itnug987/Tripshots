@@ -4,4 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
 
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="about_us"> A platform for travelers to share their travel stories and experiences.</string>
+
+    <string name="support">If you have any queries, send us an email at info@tripshots.com</string>
 </resources>

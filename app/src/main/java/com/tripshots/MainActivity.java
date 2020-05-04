@@ -3,12 +3,14 @@ package com.tripshots;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -189,14 +191,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
 
-            case R.id.privacy_policy:
-                String inURL = "https://www.freshokartz.com/privacy-policy.html";
-                i = new Intent( Intent.ACTION_VIEW , Uri.parse( inURL ) );
-                startActivity(i);
+            case R.id.about_us:
+                showDialogAbout();
                 break;
 
-            case R.id.about_us:
-               // showDialogAbout();
+            case R.id.support:
+                showDialogSupport();
                 break;
 
             default:
@@ -273,4 +273,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public void showDialogAbout() {
+        AlertDialog.Builder alertBuilder;
+        alertBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        alertBuilder.setMessage(R.string.about_us)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertBuilder.create();
+        alertDialog.setTitle("About Us");
+        alertDialog.show();
+    }
+
+    public void showDialogSupport(){
+        AlertDialog.Builder alertBuilder;
+
+        alertBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        alertBuilder.setMessage(R.string.support)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertBuilder.create();
+        alertDialog.setTitle("Support");
+        alertDialog.show();
+    }
+
+
 }
