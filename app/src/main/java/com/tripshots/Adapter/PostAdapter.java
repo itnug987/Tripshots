@@ -3,6 +3,7 @@ package com.tripshots.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +49,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         holder.blog_post_title.setText(mData.get(position).getTitle());
 
-        String s = Html.fromHtml(mData.get(position).getDescription()).toString();
+        String s = mData.get(position).getDescription();
         s = s.substring(0, Math.min(s.length(), 80));
 
         holder.blog_post_content.setText(s+"...");
 
+        Log.d("image_url", mData.get(position).getImage_url());
         Glide.with(mContext).load(mData.get(position).getImage_url()).into(holder.blog_post_image);
 
         DateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",

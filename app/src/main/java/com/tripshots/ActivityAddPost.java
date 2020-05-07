@@ -88,7 +88,7 @@ public class ActivityAddPost extends AppCompatActivity {
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        storageReference = FirebaseStorage.getInstance().getReference("Images");
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         ref = FirebaseDatabase.getInstance().getReference().child("posts").child(uid);
 
@@ -198,7 +198,9 @@ public class ActivityAddPost extends AppCompatActivity {
                             post.setTitle(title.getText().toString().trim());
                             post.setDescription(description.getText().toString().trim());
                             post.setTravel_story(travel_story.getText().toString().trim());
-                            post.setImage_url(taskSnapshot.getUploadSessionUri().toString().trim());
+
+
+                            post.setImage_url(taskSnapshot.getMetadata().getPath().trim());
 
                             Date d = new Date();
                             String s1 = d.toString();

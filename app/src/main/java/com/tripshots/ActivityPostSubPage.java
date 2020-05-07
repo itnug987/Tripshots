@@ -115,10 +115,9 @@ public class ActivityPostSubPage extends AppCompatActivity {
                             .load(postList.get(id).getImage_url())
                             .into(post_img);
 
-                    DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss-HH:mm",
+                    DateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",
                             Locale.ENGLISH);
-                    Date d = new Date();
-                    String s1 = d.toString();
+                    String s1 = postList.get(id).getDate_published();
 
                     try
                     {
@@ -132,6 +131,7 @@ public class ActivityPostSubPage extends AppCompatActivity {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
+
 
 
 
