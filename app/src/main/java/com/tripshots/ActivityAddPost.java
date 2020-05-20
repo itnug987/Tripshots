@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.tripshots.model.Post;
 import com.tripshots.model.image_upload;
@@ -57,7 +59,10 @@ public class ActivityAddPost extends AppCompatActivity {
     ImageView imgview;
 
     Uri FilePathUri;
+    Uri downloadUrl;
     StorageReference  storageReference;
+
+    StorageTask uploadTask;
 
     DatabaseReference ref;
 
@@ -186,7 +191,10 @@ public class ActivityAddPost extends AppCompatActivity {
 
             progressDialog.setTitle("Image is Uploading...");
             progressDialog.show();
-            StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
+            final StorageReference storageReference2 = storageReference.child("image" + FilePathUri.getLastPathSegment());
+
+
+
             storageReference2.putFile(FilePathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -195,29 +203,38 @@ public class ActivityAddPost extends AppCompatActivity {
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
-                            post.setTitle(title.getText().toString().trim());
-                            post.setDescription(description.getText().toString().trim());
-                            post.setTravel_story(travel_story.getText().toString().trim());
 
-
-                            post.setImage_url(taskSnapshot.getMetadata().getPath().trim());
-
-                            Date d = new Date();
-                            String s1 = d.toString();
-
-                            post.setDate_published(s1);
-
-                            ref.child(String.valueOf(post_id+1)).setValue(post).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            storageReference2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                                public void onSuccess(Uri uri) {
 
-                                    Intent i = new Intent(ActivityAddPost.this, MainActivity.class);
-                                    startActivity(i);
+                                    post.setImage_url(String.valueOf(uri));
+                                    post.setTitle(title.getText().toString().trim());
+                                    post.setDescription(description.getText().toString().trim());
+                                    post.setTravel_story(travel_story.getText().toString().trim());
+
+
+                                    Date d = new Date();
+                                    String s1 = d.toString();
+
+                                    post.setDate_published(s1);
+
+                                    ref.child(String.valueOf(post_id+1)).setValue(post).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            Intent i = new Intent(ActivityAddPost.this, MainActivity.class);
+                                            startActivity(i);
+                                        }
+                                    });
+
                                 }
                             });
 
-                        }
-                    });
+                                }
+                            });
+
+
         }
         else {
 

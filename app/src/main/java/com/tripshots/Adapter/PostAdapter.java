@@ -55,7 +55,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.blog_post_content.setText(s+"...");
 
         Log.d("image_url", mData.get(position).getImage_url());
-        Glide.with(mContext).load(mData.get(position).getImage_url()).into(holder.blog_post_image);
+         Glide.with(mContext)
+                 .load(mData.get(position).getImage_url())
+                 .into(holder.blog_post_image);
 
         DateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy",
                 Locale.ENGLISH);
