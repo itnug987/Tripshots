@@ -23,6 +23,8 @@ public class ActivityLogin extends AppCompatActivity {
     Button btn_login;
     com.tripshots.Data.sharedPref sharedPref;
 
+    Button btn_register;
+
     ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -37,6 +39,8 @@ public class ActivityLogin extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
+
+        btn_register = findViewById(R.id.btn_register);
 
         progressBar = findViewById(R.id.progress_bar);
 
@@ -70,6 +74,14 @@ public class ActivityLogin extends AppCompatActivity {
                 else
                     Toast.makeText(ActivityLogin.this, "Please enter correct Email and Password", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityLogin.this, ActivitySignUp.class);
+                startActivity(i);
             }
         });
 

@@ -33,8 +33,6 @@ public class ActivitySignUp extends AppCompatActivity {
     Button btn_register;
     sharedPref sharedPref;
 
-    Button btn_already_registered;
-
     ProgressBar progressBar;
 
     EditText name, location;
@@ -54,8 +52,6 @@ public class ActivitySignUp extends AppCompatActivity {
         location = findViewById(R.id.location);
 
         btn_register = findViewById(R.id.btn_register);
-
-        btn_already_registered = findViewById(R.id.btn_already_registered);
 
         progressBar = findViewById(R.id.progress_bar);
 
@@ -110,13 +106,7 @@ public class ActivitySignUp extends AppCompatActivity {
               }
         });
 
-        btn_already_registered.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ActivitySignUp.this, ActivityLogin.class);
-                startActivity(i);
-            }
-        });
+
 
     }
 

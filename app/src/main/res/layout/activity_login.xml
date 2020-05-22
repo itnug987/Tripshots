@@ -145,11 +145,23 @@
             android:textColor="#FFFFFF"
             android:textSize="18dp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_login"
+            android:id="@+id/btn_register"
+            android:text="Don't have an account? Register"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
+            />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/btn_login"
+            android:layout_below="@+id/btn_register"
             android:orientation="vertical"
             android:id="@+id/layout_1"
             >
