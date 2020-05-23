@@ -8,6 +8,10 @@
             android:title="Home"
             android:visible="true"/>
         <item
+            android:id="@+id/nav_my_articles"
+            android:title="My articles"
+            android:visible="true"/>
+        <item
             android:id="@+id/nav_logout"
             android:title="Logout"
             android:visible="true"/>

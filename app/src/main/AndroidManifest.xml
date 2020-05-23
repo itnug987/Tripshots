@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/tripshots_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityPostSubPage"></activity>
+        <activity android:name=".ActivityMyArticles"></activity>
+        <activity android:name=".ActivityPostSubPage" />
         <activity android:name=".ActivityAddPost" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ActivityLogin" />
