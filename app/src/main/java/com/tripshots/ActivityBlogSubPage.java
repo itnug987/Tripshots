@@ -49,6 +49,7 @@ public class ActivityBlogSubPage extends AppCompatActivity {
 
         post_img = findViewById(R.id.post_img);
         post_title = findViewById(R.id.post_title);
+        //Added comment
         post_date = findViewById(R.id.post_date);
         post_content = findViewById(R.id.post_content);
 
